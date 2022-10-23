@@ -8,8 +8,16 @@ html{
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background: #270F34;
+  background-size: 300% 300%;
+  background-image:linear-gradient(to right, #00416a, #56266d);
+  animation: AnimateBG 20s ease infinite;
   overflow: hidden;
+}
+
+@keyframes AnimateBG {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
 
 

@@ -16,7 +16,8 @@
       </div>
       <audio
        #audio
-        controls
+       (ended)="playNextSong()"
+       controls
       ></audio>
 
     </div>
