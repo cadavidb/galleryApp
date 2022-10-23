@@ -1,0 +1,15 @@
+@use 'variables' as *;
+@use 'fonts' as *;
+
+html{
+  font-family: 'Roboto';
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background: #270F34;
+  overflow: hidden;
+}
+
+
