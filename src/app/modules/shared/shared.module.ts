@@ -5,6 +5,7 @@ import { CoreAppModule } from '../core/core.module';
 import { ImageService } from './services/images.service';
 import { AnimatedBackgroudComponent } from './components/animated-backgroud/animated-backgroud.component';
 import { HeartsFloatingComponent } from './components/hearts-floating/hearts-floating.component';
+import { SongsComponent } from './components/songs/songs.component';
 
 
 
@@ -12,7 +13,8 @@ import { HeartsFloatingComponent } from './components/hearts-floating/hearts-flo
   declarations: [
     GalleryComponent,
     AnimatedBackgroudComponent,
-    HeartsFloatingComponent
+    HeartsFloatingComponent,
+    SongsComponent
   ],
   imports: [
     CoreAppModule,

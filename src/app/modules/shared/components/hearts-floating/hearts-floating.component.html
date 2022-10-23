@@ -1,6 +1,8 @@
 <div class="container">
-  <div class="col" *ngFor="let heart of hearts; let i=index">
+  <div class="col" *ngFor="let heart of hearts; let i=index;">
+
     <div [class]="'heart heart'+(i+1)">
+      <img [src]="'assets/images/'+(i+1)+'.jpeg'" >
       <div class="circle"></div>
       <div class="halfMoon"></div>
     </div>

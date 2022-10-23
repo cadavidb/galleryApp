@@ -9,7 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,
     FlexLayoutModule,
-    HttpClientModule
+    HttpClientModule,
+
   ],
   exports: [
     FlexLayoutModule,

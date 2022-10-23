@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ImageService } from '../../services/images.service';
 
 @Component({
   selector: 'app-hearts-floating',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeartsFloatingComponent implements OnInit {
   hearts:number[]=new Array(10);
-  constructor() { }
+  images:string[];
 
+  constructor(private imageService:ImageService) {
+    this.images=this.imageService.getPathImages();
+  }
   ngOnInit(): void {
   }
+
 
 }

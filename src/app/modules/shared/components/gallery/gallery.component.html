@@ -1,17 +1,29 @@
- <div class="container" fxLayout="column">
-  <!-- <div
-    class="container__content"
-    fxLayout="column"
-    fxLayoutAlign="start center"
-  >
-    <div fxLayout="row wrap" fxLayoutAlign="center center">
-      <img [src]="path" *ngFor="let path of images" />
+
+  <div class="container" fxLayout="column">
+    <app-animated-backgroud class="container__background"></app-animated-backgroud>
+    <app-hearts-floating class="container__hearts"></app-hearts-floating>
+  </div>
+
+  <div class="music" fxLayout="column">
+    <h3>{{currentSong?.name}}</h3>
+    <span>{{currentSong?.autor}}</span>
+
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+       <button (click)="playPreviousSong()"><</button>
+       <img [src]="currentSong?.cover">
+        <button (click)="playNextSong()">></button>
+      </div>
+      <audio
+       #audio
+        controls
+      ></audio>
+
     </div>
-  </div> -->
-   <app-animated-backgroud
-    class="container__background"
-  ></app-animated-backgroud>
-  <app-hearts-floating></app-hearts-floating>
-</div>
-
-
+    <button #btnPlay (click)="playSong()" class="music__play">
+      {{isPlaying ? 'Pause' : 'Play'}}
+    </button>
+  </div>
+  <!--
+  <mat-icon>pause</mat-icon>
+  <mat-icon>play_arrow</mat-icon> -->
