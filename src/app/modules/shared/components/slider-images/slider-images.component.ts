@@ -1,17 +1,22 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { ImageService } from '../../services/images.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
 
 @Component({
   selector: 'app-slider-images',
   templateUrl: './slider-images.component.html',
   styleUrls: ['./slider-images.component.scss']
 })
-export class SliderImagesComponent {
+export class SliderImagesComponent implements OnInit {
 
 
-  currentImage = 1;
+  @Input() currentImage!: number;
   @Output() Onclose:EventEmitter<boolean>=new EventEmitter<boolean>();
-  constructor() {}
+  constructor() {
+
+  }
+  ngOnInit(): void {
+    console.log(this.currentImage);
+  }
 
   nextImage() {
     this.currentImage++;
@@ -22,7 +27,7 @@ export class SliderImagesComponent {
 
   prevImage() {
     this.currentImage--;
-    if (this.currentImage < 0) {
+    if (this.currentImage <= 0) {
       this.currentImage = 9
     }
   }

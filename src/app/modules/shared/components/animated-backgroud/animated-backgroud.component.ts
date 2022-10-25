@@ -33,6 +33,9 @@ export class AnimatedBackgroudComponent implements OnInit {
     script.type = 'text/javascript';
     script.src = 'https://unpkg.com/css-doodle@0.30.4/css-doodle.min.js';
     script.async = true;
-    document.body.appendChild(script);
+    //cargar en el head
+    document.head.appendChild(script);
+
+    //document.body.appendChild(script);
   }
 }

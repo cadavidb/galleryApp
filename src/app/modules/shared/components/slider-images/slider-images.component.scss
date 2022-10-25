@@ -1,32 +1,98 @@
-@use 'justify' as *;
+@use "justify" as *;
 
-.main{
+.main {
   width: 100%;
   height: 100%;
   position: absolute;
   z-index: 6;
   top: 0;
-  background-color: rgb(0, 0, 0);
+  background: linear-gradient(
+    62deg,
+    #201b46d5,
+    #020107e0,
+    #201b46bb,
+    #020107b0
+  );
+  animation: gradient 15s ease infinite;
+  background-size: 400% 400%;
   color: rgb(253, 253, 253);
-  &__images{
-    border: 0.2px solid rgb(253, 253, 253);
-    width: 70%;
-    height: 70%
+  &__images {
+    width: 500px;
+    height: 500px;
   }
-  &__btn{
+  &__btn {
     width: 30px;
     height: 30px;
     border: none;
     margin: 15px;
     border-radius: 20px;
-    font-family: 'Fuzzy Bubbles';
+    font-family: "Fuzzy Bubbles";
     font-weight: 400;
     font-size: 30px;
+    border: none;
     cursor: pointer;
     @include justify(center);
+    &.--left {
+      background: url("/assets/images/love-range.png");
+      background-size: cover;
+      cursor: pointer;
+      transform: rotate(90deg);
+    }
+    &.--right {
+      background: url("/assets/images/love-range.png");
+      background-size: cover;
+      cursor: pointer;
+      transform: rotate(-90deg);
+    }
   }
-  img{
+
+  &__btn--close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 25px;
+    height: 25px;
+    background: url("/assets/images/love-range.png");
+    background-size: cover;
+    cursor: pointer;
+    border: none;
+  }
+  img {
+    border-radius: 10px;
     width: 100%;
     height: 100%;
+  }
+
+  @media screen and (max-width: 550px) {
+    &__images {
+      width: 300px;
+      height: 300px;
+      cursor: pointer;
+    }
+    &__btn {
+      display: none;
+    }
+  }
+}
+@-webkit-keyframes gradient {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes gradient {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }

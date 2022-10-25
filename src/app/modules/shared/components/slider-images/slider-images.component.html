@@ -1,8 +1,8 @@
-<div class="main" fxLayout="row" fxLayoutAlign="center center">
-  <button (click)="close()">x</button>
-  <button class="main__btn" (click)="prevImage()"><</button>
-  <div class="main__images">
-    <img [src]="'assets/images/'+(currentImage)+'.jpeg'">
+<div class="main" fxLayout="row" fxLayoutAlign="center center" *ngIf="currentImage">
+  <button (click)="close()" class="main__btn--close"></button>
+  <button class="main__btn --left" (click)="prevImage()"></button>
+  <div class="main__images sombra_fija">
+    <img [src]="'assets/images/'+(currentImage)+'.jpeg'" (dragend)="nextImage()">
   </div>
-  <button class="main__btn" (click)="nextImage()">></button>
+  <button class="main__btn --right" (click)="nextImage()"></button>
 </div>

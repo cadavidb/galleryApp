@@ -1,13 +1,13 @@
 
 
 
-<app-slider-images *ngIf="showSlider" (Onclose)="closeGallery()"></app-slider-images>
+<app-slider-images [currentImage]="currentImage" *ngIf="showSlider" (Onclose)="closeGallery()"></app-slider-images>
 
   <div class="container">
-    <div class="col" *ngFor="let heart of hearts; let i=index;">
+    <div class="col" *ngFor="let heart of hearts; let i=index;" (click)="showGallery(i+1)">
 
       <div [class]="'heart heart'+(i+1)" >
-        <img [src]="'assets/images/'+(i+1)+'.jpeg'" (click)="showGallery()" >
+        <img [src]="'assets/images/'+(i+1)+'.jpeg'"  >
         <div class="circle"></div>
         <div class="halfMoon"></div>
       </div>

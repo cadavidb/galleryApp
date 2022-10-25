@@ -11,6 +11,7 @@ export class HeartsFloatingComponent implements OnInit {
   @Output() OnShowMusic:EventEmitter<boolean>=new EventEmitter<boolean>();
   images:string[];
   showSlider:boolean=false;
+  currentImage!:number;
 
   constructor(private imageService:ImageService) {
     this.images=this.imageService.getPathImages();
@@ -18,7 +19,8 @@ export class HeartsFloatingComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  showGallery(){
+  showGallery(currentImage:number){
+    this.currentImage=currentImage;
     this.OnShowMusic.emit(false);
     this.showSlider=true;
   }

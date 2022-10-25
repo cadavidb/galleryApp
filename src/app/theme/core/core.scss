@@ -1,6 +1,6 @@
 @use "variables" as *;
 @use "fonts" as *;
-@import "../partials/background";
+@import "../mixins/dinamyc-background.scss";
 
 html {
   font-family: "Roboto";
