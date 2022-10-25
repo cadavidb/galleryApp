@@ -1,57 +1,47 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MusicPlayer } from '../../utils/musicPlayer';
+import { songs } from '../../utils/songs/songs';
 
 @Component({
   selector: 'app-songs',
   templateUrl: './songs.component.html',
   styleUrls: ['./songs.component.scss']
 })
-export class SongsComponent implements OnInit,AfterViewInit {
-  @ViewChild('song') audioPlayer:any;
-  songs=[
-    'assets/songs/always.mp3',
-    'assets/songs/deep.mp3',
-    'assets/songs/love.mp3',
-  ]
-  currentSong:string;
-  constructor() {
-    this.currentSong=this.songs[this.generateRandomSong()];
-  }
+export class SongsComponent implements AfterViewInit {
+
+  @ViewChild('audio') audioPlayerRef: any;
+  currentSong: any=songs[0];
+  volume: number = 0.5;
+  isPlaying = false;
+  musicPlayer!:MusicPlayer;
+  constructor() {}
   ngAfterViewInit(): void {
-
-    this.audioPlayer.nativeElement.click();
-    const audio= new Audio(this.currentSong);
-    audio.play();
+    this.musicPlayer = new MusicPlayer(songs, this.audioPlayerRef);
   }
 
-  ngOnInit(): void {
-    console.log(this.currentSong);
-  }
-  generateRandomSong():number{
-    return Math.floor(Math.random()*this.songs.length);
-  }
-  private ensureSongPlay(): void{
+  nextSong=()=>{
+    this.musicPlayer.playNextSong();
+    this.updateSong();
+  };
 
-    const audioPlayer=this.audioPlayer.nativeElement;
+  previouSong=()=>{
+    this.musicPlayer.playPreviousSong();
+    this.updateSong();
+  };
 
-    console.log(audioPlayer);
+  playSong=()=>{
+    this.musicPlayer.playSong();
+    this.updateSong();
+  };
 
-    // if(!audioPlayer) return;
+  updateSong=()=>{
+    this.currentSong = this.musicPlayer.song;
+    this.isPlaying = this.musicPlayer.isPlayingSong;
+  };
 
-    // if(promise !== undefined){
-    //     promise.then(() => {
+  turnUpVolume=()=>this.volume+=0.1;
 
-    //     }).catch((error:any) => {
-    //         this.audioPlayer.muted=true;
-    //         this.audioPlayer.play();
-    //     });
-    // }
-}
+  turnDownVolume=()=>this.volume-=0.1;
 
-  // nextSong(){
-  //   this.currentSong++;
-  //   if(this.currentSong>=this.songs.length){
-  //     this.currentSong=0;
-  //   }
-  // }
 
 }

@@ -6,6 +6,7 @@ import { ImageService } from './services/images.service';
 import { AnimatedBackgroudComponent } from './components/animated-backgroud/animated-backgroud.component';
 import { HeartsFloatingComponent } from './components/hearts-floating/hearts-floating.component';
 import { SongsComponent } from './components/songs/songs.component';
+import { SliderImagesComponent } from './components/slider-images/slider-images.component';
 
 
 
@@ -14,7 +15,8 @@ import { SongsComponent } from './components/songs/songs.component';
     GalleryComponent,
     AnimatedBackgroudComponent,
     HeartsFloatingComponent,
-    SongsComponent
+    SongsComponent,
+    SliderImagesComponent
   ],
   imports: [
     CoreAppModule,

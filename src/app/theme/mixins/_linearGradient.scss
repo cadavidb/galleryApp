@@ -1,0 +1,18 @@
+@mixin bg-linearGradient($direction, $color1, $color2) {
+  background: $color1;
+  background: -webkit-linear-gradient(to #{$direction}, $color2, $color1);
+  background: linear-gradient(to #{$direction}, $color2, $color1);
+}
+
+@mixin circle-style($margins, $border-radius, $rotateDeg) {
+  width: 90px;
+  height: 90px;
+  content: "";
+  @include bg-linearGradient(right,rgba(228, 77, 77, 0.884),rgba(245, 244, 244, 0.993));
+  border: none;
+  position: absolute;
+  margin: $margins;
+  border-radius: $border-radius;
+  transform: rotate($rotateDeg);
+
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ImageService } from '../../services/images.service';
 
 @Component({
@@ -8,12 +8,23 @@ import { ImageService } from '../../services/images.service';
 })
 export class HeartsFloatingComponent implements OnInit {
   hearts:number[]=new Array(10);
+  @Output() OnShowMusic:EventEmitter<boolean>=new EventEmitter<boolean>();
   images:string[];
+  showSlider:boolean=false;
 
   constructor(private imageService:ImageService) {
     this.images=this.imageService.getPathImages();
   }
   ngOnInit(): void {
+  }
+
+  showGallery(){
+    this.OnShowMusic.emit(false);
+    this.showSlider=true;
+  }
+  closeGallery(){
+    this.OnShowMusic.emit(true);
+    this.showSlider=false;
   }
 
 

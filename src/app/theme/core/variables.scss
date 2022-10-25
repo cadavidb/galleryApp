@@ -1,6 +1,38 @@
 
 $color-primary:#884EA0;
 
+$animations-hearts:(
+  "1":(
+    "DurationMotion":20s,
+    "DurationMove":23s,
+    "Delay":5s,
+    "index":1
+  ),
+  "2":(
+    "DurationMotion":12s,
+    "DurationMove":15s,
+    "Delay":1s,
+    "index":2
+  ),
+  "3":(
+    "DurationMotion":12s,
+    "DurationMove":15s,
+    "Delay":18s,
+    "index":3
+  ),
+  "4":(
+    "DurationMotion":16s,
+    "DurationMove":19s,
+    "Delay":11s,
+    "index":4
+  ),
+  "5":(
+    "DurationMotion":15s,
+    "DurationMove":18s,
+    "Delay":5s,
+    "index":5
+  )
+);
 $fonts-fuzzy:(
      "Fuzzy":(
       "font-family": "Fuzzy Bubbles",

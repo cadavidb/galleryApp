@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ImageService {
 
-  constructor(private http:HttpClient) { }
+  constructor() { }
 
   getPathImages(){
     let images=[];

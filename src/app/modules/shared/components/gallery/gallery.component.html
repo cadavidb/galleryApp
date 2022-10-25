@@ -1,30 +1,18 @@
 
-  <div class="container" fxLayout="column">
-    <app-animated-backgroud fxHide.sm fxHide.xs fxShow.gt-md fxShow.lg fxShow.md     class="container__background"></app-animated-backgroud>
-    <app-hearts-floating class="container__hearts"></app-hearts-floating>
-  </div>
 
-  <div class="music" fxLayout="column">
-    <h3>{{currentSong?.name}}</h3>
-    <span>{{currentSong?.autor}}</span>
 
-    <div fxLayout="column" fxLayoutAlign="center center">
-      <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
-       <button (click)="playPreviousSong()"><</button>
-       <img [src]="currentSong?.cover">
-        <button (click)="playNextSong()">></button>
-      </div>
-      <audio
-       #audio
-       (ended)="playNextSong()"
-       controls
-      ></audio>
-
+<div class="background">
+  <div class="sky">
+    <div class="container" fxLayout="column">
+      <app-animated-backgroud fxHide.sm fxHide.xs fxShow.gt-md fxShow.lg fxShow.md class="container__background">
+      </app-animated-backgroud>
+      <app-hearts-floating class="container__hearts" (OnShowMusic)="showMusicPlayer($event)"></app-hearts-floating>
     </div>
-    <button #btnPlay (click)="playSong()" class="music__play">
-      {{isPlaying ? 'Pause' : 'Play'}}
-    </button>
+
+    <app-songs [ngClass]="{'hidden': !showPlayer}"></app-songs>
+    <div class="stars"></div>
+    <div class="stars1"></div>
+    <div class="stars2"></div>
+    <div class="shooting-stars"></div>
   </div>
-  <!--
-  <mat-icon>pause</mat-icon>
-  <mat-icon>play_arrow</mat-icon> -->
+</div>

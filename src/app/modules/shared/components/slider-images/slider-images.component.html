@@ -1,0 +1,8 @@
+<div class="main" fxLayout="row" fxLayoutAlign="center center">
+  <button (click)="close()">x</button>
+  <button class="main__btn" (click)="prevImage()"><</button>
+  <div class="main__images">
+    <img [src]="'assets/images/'+(currentImage)+'.jpeg'">
+  </div>
+  <button class="main__btn" (click)="nextImage()">></button>
+</div>

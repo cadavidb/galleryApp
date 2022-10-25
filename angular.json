@@ -30,7 +30,16 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/app/theme/mixins",
+                "src/app/theme/variables",
+                "src/app/theme/functions",
+                "src/app/theme/partials",
+                "src/app/theme/animations"
+              ]
+            }
           },
           "configurations": {
             "production": {

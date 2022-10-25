@@ -1,0 +1,35 @@
+@use "../core/variables.scss" as *;
+@mixin heart-animated {
+  @each $animation, $props in $animations-hearts {
+    $index: map-get($props, "index");
+    $DurationMotion: map-get($props, "DurationMotion");
+    $DurationMove: map-get($props, "DurationMove");
+    $Delay: map-get($props, "Delay");
+    .heart#{$index} {
+      animation: $DurationMotion Linear-motion infinite,
+        MoveLeft $DurationMove infinite;
+      animation-delay: $Delay;
+    }
+  }
+}
+
+@keyframes Linear-motion {
+  0% {
+    top: 100vh;
+  }
+  100% {
+    top: -20vh;
+  }
+}
+
+@keyframes MoveLeft {
+  0% {
+    margin-left: 0%;
+  }
+  50% {
+    margin-left: 50%;
+  }
+  100% {
+    margin-left: 0%;
+  }
+}
