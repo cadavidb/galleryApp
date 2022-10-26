@@ -1,10 +1,12 @@
 
 
-<div class="music" fxLayout="column">
-   <h3>{{currentSong?.name}}</h3>
+ <div class="music" fxLayout="column">
+   <ng-template [ngTemplateOutlet]="loadingTemplate" *ngIf="loadingSong"></ng-template>
+  <div [ngClass]="{'music__audiohidden': loadingSong}" fxLayout="column" fxLayoutAlign="center center">
+  <h3>{{currentSong?.name}}</h3>
   <span>{{currentSong?.autor}}</span>
 
-  <div fxLayout="column" fxLayoutAlign="center center">
+  <div fxLayout="column" fxLayoutAlign="center center" #audioBox>
     <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
      <button (click)="previouSong()"><</button>
      <img [src]="currentSong?.cover">
@@ -22,8 +24,21 @@
   <button #btnPlay (click)="playSong()" class="music__play">
     {{isPlaying ? 'Pause' : 'Play'}}
   </button>
+ </div>
+
+
+
 </div>
 
 <div class="slidecontainer">
   <input class="slider" type="range" min="0.0" max="1.0" step="0.1" [(ngModel)]="volume">
 </div>
+
+<ng-template #loadingTemplate>
+
+    <img src="assets/images/loading.gif">
+     <span>Cargando...</span>
+</ng-template>
+
+
+

@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { debounceTime, filter } from 'rxjs';
 import { MusicPlayer } from '../../utils/musicPlayer';
 import { songs } from '../../utils/songs/songs';
 
@@ -7,41 +8,49 @@ import { songs } from '../../utils/songs/songs';
   templateUrl: './songs.component.html',
   styleUrls: ['./songs.component.scss']
 })
-export class SongsComponent implements AfterViewInit {
+export class SongsComponent implements OnInit{
 
-  @ViewChild('audio') audioPlayerRef: any;
+  @ViewChild('audio',{
+    static: true
+  }) audioPlayerRef: any;
   currentSong: any=songs[0];
   volume: number = 0.5;
   isPlaying = false;
+  loadingSong: boolean = true;
   musicPlayer!:MusicPlayer;
-  constructor() {}
-  ngAfterViewInit(): void {
-    this.musicPlayer = new MusicPlayer(songs, this.audioPlayerRef);
+  constructor() {
   }
+  ngOnInit(): void {
+    this.musicPlayer = new MusicPlayer(songs, this.audioPlayerRef);
+    this.musicPlayer.state.subscribe((song)=> this.updateSong(song));
+  }
+
 
   nextSong=()=>{
     this.musicPlayer.playNextSong();
-    this.updateSong();
   };
 
   previouSong=()=>{
     this.musicPlayer.playPreviousSong();
-    this.updateSong();
+
   };
 
   playSong=()=>{
     this.musicPlayer.playSong();
-    this.updateSong();
   };
 
-  updateSong=()=>{
-    this.currentSong = this.musicPlayer.song;
-    this.isPlaying = this.musicPlayer.isPlayingSong;
+  updateSong=(state:any)=>{
+    const {song,playing,loading}=state;
+    this.currentSong = song;
+    this.isPlaying = playing;
+    this.loadingSong = loading;
   };
 
   turnUpVolume=()=>this.volume+=0.1;
 
   turnDownVolume=()=>this.volume-=0.1;
+
+
 
 
 }
